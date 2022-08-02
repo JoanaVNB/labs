@@ -8,13 +8,13 @@
 #include <curl/curl.h>
 #include  "../libft/libft.h"
 
-typedef struct s_p
+/* typedef struct s_p
 {
   char *header;
   char *line_one;
   char *line_two;
   char *line_three;
-} t_p;
+} t_p; */
 
 /* typedef struct s_arg
 {
@@ -27,7 +27,7 @@ typedef struct s_p
 
 } t_arg; */
 
-typedef struct s_http
+/* typedef struct s_http
 {
    char *nome;
   char *protocolo;
@@ -35,12 +35,11 @@ typedef struct s_http
   char *metodo;
   int codigo;
   int intervalo; 
-} t_http;
+} t_http; */
 
-//char *line = 0;
-void read_lines(t_p *p);
-void trim_word(char *dest, int c, char *str);
-int config_http(char **str);
+void read_lines(int fd);
+void config_http(char **str);
+void split_line(char *file);
 
 #endif
 

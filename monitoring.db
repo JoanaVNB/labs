@@ -1,5 +1,7 @@
 # monitoring.db
 
-intra	HTTPS	intra.42.fr	GET	200	120
+intra	HTTP	intra.42.fr	GET	200	120
 game ping test	PING	game.42sp.org.br	60
-nome  HTTPS endereço  intervalo servidor DNS
+GitHub	HTTPS	github.com/JoanaVNB	POST	200	120
+game ping test	HTTPS	game.42sp.org.br	60
+game ping test	PING	game.42sp.org.br	60

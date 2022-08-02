@@ -6,7 +6,7 @@ LIBFT	= libft.a
 IFT		= -Ilibft -Llibft -lft
 ICURL = -lcurl
 
-SRCS	= read_lines.c read_args.c config_http.c
+SRCS	= main.c read_lines.c read_args.c config_http.c
 
 OBJSDIR	= obj
 OBJS	= $(addprefix ${OBJSDIR}/, ${SRCS:%.c=%.o})

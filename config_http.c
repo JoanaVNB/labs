@@ -27,7 +27,7 @@ size_t write_data(void *data, size_t size, size_t nmemb, void *userp)
  
 struct memory chunk = {0};
 
-int config_http(char **str)
+void config_http(char **str)
 {
     CURL *curl;
     CURLcode result;
@@ -45,7 +45,6 @@ int config_http(char **str)
     if (!curl)
     {
         fprintf(stderr, "init failed\n");
-        exit(1);
     }
     curl_easy_setopt(curl, CURLOPT_URL, url);
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
@@ -53,7 +52,7 @@ int config_http(char **str)
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
 /* we pass our 'chunk' struct to the callback function */
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&chunk);
-    curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "GET");  /* use um GET para buscar isso */
+    curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, str[3]);  /* use um GET para buscar isso */
     result = curl_easy_perform(curl);
 
     if (result != CURLE_OK)
@@ -62,6 +61,7 @@ int config_http(char **str)
     }
     else
     {
+        printf("-----------HTTP----------\n\n");
         fprintf(stdout, "Successful request.\n\n");
         printf("Let's start monitoring the URL named as: %s.\n\n", str[0]);
         temp = ft_itoa(curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &code));
@@ -92,5 +92,4 @@ int config_http(char **str)
     
     curl_global_cleanup();
     curl_easy_cleanup (curl);
-    exit(0);
 }
