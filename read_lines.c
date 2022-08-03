@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-#include <stdlib.h>
-#include  "../libft/libft.h"
 #include	"monitoring.h"
 
 void read_lines(int fd)
@@ -33,7 +28,11 @@ void read_lines(int fd)
 	while (file[x])
 	{
 		if (strstr(file[x], "HTTP") != 0)
-			split_line(file[x]);
+			split_line_http(file[x]);
+		if (strstr(file[x], "PING") != 0)
+			split_line_ping(file[x]);
+		if (strstr(file[x], "DNS") != 0)
+			split_line_dns(file[x]);
 		x++;
 	}
 }
